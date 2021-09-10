@@ -1,0 +1,64 @@
+-- ====== Artist Table ===========
+
+select name from artist
+ order by name desc
+ limit 10;
+
+
+select * from artist
+where name like ('Black%');
+
+
+select * from artist
+where name like ('%Black%');
+
+
+-- ======== Employee Table ==============
+
+ select MAX(birth_date) from employee;
+
+
+select MIN(birth_date) from employee;
+
+-- ========= Invoice Table ===============
+
+
+select COUNT(*) from invoice
+where billing_state in ('CA', 'TX', 'AZ');
+
+
+select avg(total) from invoice;
+
+
+-- =========== More Join Queries ============
+
+
+select playlist_track.track_id, playlist.name
+from playlist_track
+join playlist
+on playlist_track.playlist_id = playlist.playlist_id
+where playlist.name = 'Music';
+
+
+select track.name
+from track
+join playlist_track
+on track.track_id = playlist_track.track_id
+where playlist_id = 5;
+
+
+select track.name, playlist.name
+from track
+join playlist_track
+on track.track_id = playlist_track.track_id
+join playlist
+on playlist.playlist_id = playlist_track.playlist_id;
+
+
+select track.name, album.title
+from track
+join album 
+on track.album_id = album.album_id
+join genre 
+on genre.genre_id = track.genre_id
+where genre.name = 'Alternative & Punk';
